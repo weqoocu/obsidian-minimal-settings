@@ -47,7 +47,8 @@ export function updateStyle(settings: MinimalSettings) {
     settings.tableWidth,
     settings.imgWidth,
     settings.iframeWidth,
-    settings.mapWidth
+    settings.mapWidth,
+    settings.tabTitleVisibility
   );
 
   const el = document.getElementById('minimal-theme');
@@ -101,7 +102,10 @@ export function removeSettings() {
     'map-wide',
     'map-max',
     'map-100',
-    'map-default-width'
+    'map-default-width',
+    'minimal-tab-title-visible',
+    'minimal-tab-title-hover',
+    'minimal-tab-title-hidden'
   );
 }
 
