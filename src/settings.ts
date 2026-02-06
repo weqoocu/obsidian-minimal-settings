@@ -34,6 +34,7 @@ export interface MinimalSettings {
   folding: boolean;
   lineNumbers: boolean;
   readableLineLength: boolean;
+  tabTitleVisibility: string;
 }
 
 export const DEFAULT_SETTINGS: MinimalSettings = {
@@ -68,7 +69,7 @@ export const DEFAULT_SETTINGS: MinimalSettings = {
   folding: true,
   lineNumbers: false,
   readableLineLength: false,
-  devBlockWidth: false,
+  tabTitleVisibility: 'minimal-tab-title-visible',
 }
 
 export class MinimalSettingsTab extends PluginSettingTab {
@@ -257,6 +258,19 @@ export class MinimalSettingsTab extends PluginSettingTab {
         .addToggle(toggle => toggle.setValue(this.plugin.settings.focusMode)
           .onChange((value) => {
             this.plugin.settings.focusMode = value;
+            this.plugin.saveData(this.plugin.settings);
+            this.plugin.refresh();
+          })))
+      .addSetting(setting => setting
+        .setName('Tab title visibility')
+        .setDesc('Control the visibility of the tab title (breadcrumbs) area.')
+        .addDropdown(dropdown => dropdown
+          .addOption('minimal-tab-title-visible','Always visible')
+          .addOption('minimal-tab-title-hover','Hover to show')
+          .addOption('minimal-tab-title-hidden','Hidden')
+          .setValue(this.plugin.settings.tabTitleVisibility)
+          .onChange((value) => {
+            this.plugin.settings.tabTitleVisibility = value;
             this.plugin.saveData(this.plugin.settings);
             this.plugin.refresh();
           })))
