@@ -69,7 +69,8 @@ export const DEFAULT_SETTINGS: MinimalSettings = {
   folding: true,
   lineNumbers: false,
   readableLineLength: false,
-  tabTitleVisibility: 'minimal-tab-title-visible',
+  devBlockWidth: false,
+  tabTitleVisibility: "minimal-tab-title-visible",
 }
 
 export class MinimalSettingsTab extends PluginSettingTab {
